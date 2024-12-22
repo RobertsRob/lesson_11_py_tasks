@@ -1,3 +1,4 @@
+
 # 1.task
 # Создайте класс Book с атрибутами: название, автор, год издания, цена. Реализуйте метод __str__, который выводит строковое представление объекта книги.
 class Book:
@@ -44,8 +45,40 @@ print(student.average_grade())
 
 
 # 4.task
+# Добавьте в класс Student метод __eq__, который сравнивает студентов по среднему баллу.
+class Student:
+    def __init__(self, name, age, grades):
+        self.name = name
+        self.age = age
+        self.grades = grades
+    
+    def average_grade(self):
+        return sum(self.grades) / len(self.grades)
+    
+    def __eq__(self, other):
+        return self.average_grade() == other.average_grade()
+
+student1 = Student("Ivan", 16, [4, 5, 4, 3, 5])
+student2 = Student("Maria", 17, [5, 5, 5, 4, 4])
+print(student1 == student2)
 
 # 5.task
+# Создайте класс Employee с аттрибутами: имя, должность, зарплата. Реализуйте метод для увеличения зарплаты на процент и метод для вывода полной информации о сотруднике.
+class Employee:
+    def __init__(self, name, position, salary):
+        self.name = name
+        self.position = position
+        self.salary = salary
+    
+    def increase_salary(self, percent):
+        self.salary += self.salary * percent / 100
+    
+    def __str__(self):
+        return f'{self.name}, {self.position}, зарплата - {self.salary}'
+
+employee = Employee("Alex", "Manager", 50000)
+employee.increase_salary(10)
+print(employee)
 
 # 6.task
 
