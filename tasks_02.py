@@ -65,15 +65,22 @@ circle = Circle(5)
 print(circle.area())
 
 # 4.task
+# Создайте класс Person, который имеет метод для изменения имени. Наследуйте от этого класса класс Employee, который добавляет аттрибут для зарплаты и переопределяет метод для изменения имени с добавлением приветствия.
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def change_name(self, new_name):
+        self.name = new_name
 
-# 5.task
+class Employee(Person):
+    def __init__(self, name, salary):
+        super().__init__(name)
+        self.salary = salary
+    
+    def change_name(self, new_name):
+        super().change_name(new_name)
+        print(f"Привет, {self.name}!")
 
-# 6.task
-
-# 7.task
-
-# 8.task
-
-# 9.task
-
-# 10.task
+emp = Employee("John", 5000)
+emp.change_name("Alex")
