@@ -79,13 +79,3 @@ class Employee:
 employee = Employee("Alex", "Manager", 50000)
 employee.increase_salary(10)
 print(employee)
-
-# 6.task
-
-# 7.task
-
-# 8.task
-
-# 9.task
-
-# 10.task
