@@ -37,19 +37,56 @@ working_student.work()
 
 
 # 3.task
+# Создайте два класса: EmailSender (отправка email) и SMSSender (отправка SMS). 
+# Затем создайте класс Notification, который будет наследовать оба этих класса и использовать оба метода для отправки уведомлений (одновременно отправляя email и SMS).
+
+class EmailSender:
+    def send_email(self, message):
+        print(f"Email sent: {message}")
+
+class SMSSender:
+    def send_sms(self, message):
+        print(f"SMS sent: {message}")
+
+class Notification(EmailSender, SMSSender):
+    def send_notification(self, message):
+        self.send_email(message)
+        self.send_sms(message)
+
+notification = Notification()
+notification.send_notification("You have a new message!") 
 
 # 4.task
+# Создайте два класса - Vehicle, который имеет атрибут speed и метод drive(), который выводит что машина едет с определенной скоростью. 
+# А также класс ElectricVehicle, который наследует Vehicle и добавляет атрибут battery_level и метод charge(), который восполняет battery_level до 100 процентов.
+# В классе ElectricVehicle переопределите метод drive(), чтобы сначала проверять уровень заряда батареи перед тем, как ехать и при езде отнимать 10 процентов заряда.
 
-# 5.task
+class Vehicle:
+    def __init__(self, speed):
+        self.speed = speed
 
-# 6.task
+    def drive(self):
+        print(f"Driving at {self.speed} km/h")
 
-# 7.task
+class ElectricVehicle(Vehicle):
+    def __init__(self, speed, battery_level):
+        super().__init__(speed)
+        self.battery_level = battery_level
 
-# 8.task
+    def charge(self):
+        self.battery_level = 100
+        print("Charging completed. Battery level is now 100%.")
 
-# 9.task
+    def drive(self):
+        if self.battery_level > 0:
+            super().drive()
+            self.battery_level -= 10
+            print(f"Battery level is now {self.battery_level}%.")
+        else:
+            print("Battery is empty. Please charge the vehicle.")
 
-# 10.task
+ev = ElectricVehicle(60, 50)
+ev.drive()
+ev.charge()
 
 
