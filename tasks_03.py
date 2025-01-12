@@ -1,20 +1,18 @@
 # 1.task
-# Создайте два класса: Shape и Rectangle. Класс Shape должен иметь метод area, который возвращает 0, а класс Rectangle должен наследовать Shape и переопределить метод area, чтобы вычислять площадь прямоугольника по формуле width * height.
-
+# Создайте класс Shape, в котором реализуйте метод area. Создайте класс Circle, который наследует от Shape и переопределяет метод area для вычисления площади круга.
 class Shape:
     def area(self):
-        return 0
+        pass
 
-class Rectangle(Shape):
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
-
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+    
     def area(self):
-        return self.width * self.height
+        return 3.14 * self.radius ** 2
 
-rectangle = Rectangle(5, 10)
-print(rectangle.area())  # 50
+circle = Circle(5)
+print(circle.area())
 
 
 # 2.task
@@ -55,42 +53,3 @@ working_student.work()
 # 10.task
 
 
-
-/////////////////////////////////////////////////////// na dorabotku:
-
-# 3.task
-# Создайте класс Shape, в котором реализуйте метод area. Создайте класс Circle, который наследует от Shape и переопределяет метод area для вычисления площади круга.
-class Shape:
-    def area(self):
-        pass
-
-class Circle(Shape):
-    def __init__(self, radius):
-        self.radius = radius
-    
-    def area(self):
-        return 3.14 * self.radius ** 2
-
-circle = Circle(5)
-print(circle.area())
-
-# 4.task
-# Создайте класс Person, который имеет метод для изменения имени. Наследуйте от этого класса класс Employee, который добавляет аттрибут для зарплаты и переопределяет метод для изменения имени с добавлением приветствия.
-class Person:
-    def __init__(self, name):
-        self.name = name
-    
-    def change_name(self, new_name):
-        self.name = new_name
-
-class Employee(Person):
-    def __init__(self, name, salary):
-        super().__init__(name)
-        self.salary = salary
-    
-    def change_name(self, new_name):
-        super().change_name(new_name)
-        print(f"Привет, {self.name}!")
-
-emp = Employee("John", 5000)
-emp.change_name("Alex")
