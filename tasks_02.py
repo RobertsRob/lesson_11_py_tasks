@@ -49,6 +49,33 @@ emp.set_salary(800)
 emp.set_salary(1500)
 
 # 3.task
+# Создайте класс BankAccount с приватным атрибутом __balance. Реализуйте методы для пополнения и снятия средств. 
+# Проверьте, чтобы нельзя было снять больше, чем есть на балансе. Добавьте метод, возвращающий текущий баланс.
+
+class BankAccount:
+    def __init__(self, initial_balance=0):
+        self.__balance = initial_balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+        else:
+            print("Сумма депозита должна быть положительной.")
+
+    def withdraw(self, amount):
+        if 0 < amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Невозможно снять указанную сумму.")
+    
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(100)
+account.deposit(50)
+account.withdraw(30)
+print(account.get_balance())  # 120
+
 # 4.task
 # Создайте класс Triangle с приватными атрибутами __a, __b, __c, которые задают длины сторон треугольника.
 # Реализуйте методы для установки значений атрибутов и проверки, можно ли составить треугольник с такими сторонами (условие треугольника: сумма двух любых сторон должна быть больше третьей). 
