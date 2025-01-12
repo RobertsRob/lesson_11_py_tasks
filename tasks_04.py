@@ -131,3 +131,63 @@ for vehicle in vehicles:
 # Разделение по файлам:
 # student.py: Определите класс Student и его наследников.
 # main.py: Создайте объекты студентов и выведите информацию с помощью get_info().
+
+
+# student.py:
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        self.subjects = []
+
+    def add_subject(self, subject, grade):
+        self.subjects.append((subject, grade))
+
+    def get_average_grade(self):
+        return sum(grade for _, grade in self.subjects) / len(self.subjects) if self.subjects else 0
+
+    def get_info(self):
+        return f"{self.name}, Age: {self.age}, Average Grade: {self.get_average_grade()}"
+
+
+class HighSchoolStudent(Student):
+    def __init__(self, name, age):
+        super().__init__(name, age)
+        self.advanced_subjects = []
+
+    def add_advanced_subject(self, subject, grade):
+        self.advanced_subjects.append((subject, grade))
+
+    def get_info(self):
+        info = super().get_info()
+        advanced_subjects = ", ".join([subject for subject, _ in self.advanced_subjects])
+        return f"{info}\nAdvanced Subjects: {advanced_subjects}"
+
+
+class ElementarySchoolStudent(Student):
+    def __init__(self, name, age):
+        super().__init__(name, age)
+
+    def get_info(self):
+        return super().get_info() + "\n(Only basic subjects)"
+
+# main.py:
+from student import HighSchoolStudent, ElementarySchoolStudent
+
+john = HighSchoolStudent("John Doe", 17)
+john.add_subject("Math", 4)
+john.add_subject("English", 5)
+john.add_advanced_subject("Physics", 5)
+
+jane = ElementarySchoolStudent("Jane Doe", 8)
+jane.add_subject("Math", 5)
+
+print(john.get_info())
+print(jane.get_info())
+
+
+
+
+
+
+
