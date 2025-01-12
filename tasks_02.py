@@ -47,3 +47,44 @@ emp = Employee("John", 1200)
 print(emp.get_name(), emp.get_salary())
 emp.set_salary(800)
 emp.set_salary(1500)
+
+# 3.task
+# 4.task
+# Создайте класс Triangle с приватными атрибутами __a, __b, __c, которые задают длины сторон треугольника.
+# Реализуйте методы для установки значений атрибутов и проверки, можно ли составить треугольник с такими сторонами (условие треугольника: сумма двух любых сторон должна быть больше третьей). 
+# Если треугольник можно составить, добавьте метод для вычисления его площади по формуле Герона. (https://en.wikipedia.org/wiki/Heron%27s_formula)
+
+from numpy import sqrt
+
+class Triangle:
+    def __init__(self, a, b, c):
+        self.__a = None
+        self.__b = None
+        self.__c = None
+        self.set_sides(a, b, c)
+
+    def set_sides(self, a, b, c):
+        if self.__is_valid_triangle(a, b, c):
+            self.__a = a
+            self.__b = b
+            self.__c = c
+        else:
+            print("С такими сторонами треугольник невозможен.")
+
+    def __is_valid_triangle(self, a, b, c):
+        return a + b > c and a + c > b and b + c > a
+
+    def calculate_area(self):
+        if not all([self.__a, self.__b, self.__c]):
+            print("Стороны треугольника не установлены.")
+        else:
+            s = (self.__a + self.__b + self.__c) / 2
+            return sqrt(s * (s - self.__a) * (s - self.__b) * (s - self.__c))
+
+triangle = Triangle(3, 4, 5)
+print(triangle.calculate_area())  # 6.0
+
+
+# 5.task
+# 6.task
+# 3.task
