@@ -73,6 +73,46 @@ for employee in employees:
 
 
 # 4.task
+# Создайте абстрактный класс Movable, который должен содержать метод move(), выводящий информацию о скорости транспортного средства.
+# Затем создайте следующие наследующие классы:
+# 1. MovableWithEngine — класс для транспортных средств с двигателем. В нем реализуйте метод move(), который сначала выводит информацию о скорости, а затем — о мощности двигателя.
+# 2. Bicycle — класс для велосипеда, который не имеет двигателя. В этом классе метод move() должен выводить только скорость.
+# 3. Car — класс для автомобиля с двигателем и возможностью перевозить пассажиров. Он должен наследовать MovableWithEngine и использовать его метод move(), при этом добавляя информацию о количестве пассажиров.
+
+class Movable:
+    def __init__(self, speed):
+        self.speed = speed
+
+    def move(self):
+        print(f"Переместился co скоростью {self.speed} км/ч!")
+
+class MovableWithEngine(Movable):
+    def __init__(self, speed, horse_power):
+        super().__init__(speed)
+        self.horse_power = horse_power
+
+    def move(self):
+        super().move()
+        print(f"И c мощностью в {self.horse_power} лошадиных сил!")
+
+class Bicycle(Movable):
+    def __init__(self, speed):
+        super().__init__(speed)
+
+class Car(MovableWithEngine):
+    def __init__(self, speed, horse_power, passenger_count):
+        super().__init__(speed, horse_power)
+        self.passenger_count = passenger_count
+
+    def move(self):
+        super().move()
+        print(f"B транспортном средстве {self.passenger_count} пассажиров!")
+
+vehicles = [Bicycle(20, 1), Car(120, 250, 5), Car(200, 600, 2)]
+for vehicle in vehicles:
+    vehicle.move()
+
+
 
 # 5.task
 
