@@ -110,8 +110,3 @@ class Triangle:
 
 triangle = Triangle(3, 4, 5)
 print(triangle.calculate_area())  # 6.0
-
-
-# 5.task
-# 6.task
-# 3.task
